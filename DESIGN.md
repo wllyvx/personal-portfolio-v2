@@ -23,6 +23,12 @@ typography:
     fontWeight: 400
     lineHeight: 0.95
     letterSpacing: "normal"
+  feature:
+    fontFamily: "Anton, Archivo Black, sans-serif"
+    fontSize: "clamp(1.75rem, 3.5vw, 3rem)"
+    fontWeight: 400
+    lineHeight: 0.95
+    letterSpacing: "normal"
   body:
     fontFamily: "Archivo, system-ui, sans-serif"
     fontSize: "16px"
@@ -75,7 +81,7 @@ Committed strategy: charcoal-ink grounds, bone text, press-orange reserved for l
 
 ## Typography
 
-Anton condensed nameplate for display, Archivo for body capped at 70ch, JetBrains Mono uppercase tracked meta only for edition data, folios, and code-adjacent labels. Headings carry their own weight; no kickers or eyebrow labels.
+Anton condensed nameplate for display, section, and feature titles — feature is the deliberate intermediate step (1.75–3rem) for project titles, held below section to preserve H2/H3 hierarchy — Archivo for body capped at 70ch, JetBrains Mono uppercase tracked meta only for edition data, folios, and code-adjacent labels. Headings carry their own weight; no kickers or eyebrow labels. Contact back-page uses the display step.
 
 ## Layout
 

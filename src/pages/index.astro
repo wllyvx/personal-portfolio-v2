@@ -88,13 +88,13 @@ const stack = [
 
         <!-- Edition rail -->
         <header class="fixed inset-x-0 top-0 z-50 border-b rule bg-[#0c0b09]/90 backdrop-blur-sm">
-            <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
+            <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-3 sm:gap-4">
                 <p class="font-mono2 tnum text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">
                     Vol.02 · 2026 · Karawang
                 </p>
                 <nav
                     aria-label="Navigasi edisi"
-                    class="flex items-center gap-5"
+                    class="flex items-center gap-3 sm:gap-5"
                 >
                     <a
                         href="#profil"
@@ -130,6 +130,7 @@ const stack = [
                         alt=""
                         class="hero-drift h-full w-full object-cover"
                         fetchpriority="high"
+                        decoding="async"
                     />
                     <video
                         class="absolute inset-0 h-full w-full object-cover opacity-0"
@@ -138,7 +139,8 @@ const stack = [
                         loop
                         playsinline
                         poster="/hero-poster.svg"
-                        aria-label="Video latar sampul (placeholder, belum ada file final)"
+                        aria-hidden="true"
+                        tabindex="-1"
                     >
                         {/* Sumber video final belum diputuskan: poster tampil sebagai pengganti */}
                     </video>
@@ -190,7 +192,7 @@ const stack = [
 
             <!-- Edisi strip (static, no motion) -->
             <div class="overflow-hidden border-y rule py-3" aria-hidden="true">
-                <p class="truncate px-5 text-center font-display text-2xl text-[#f2ead9]/90 uppercase">
+                <p class="truncate px-5 text-center font-display text-lg text-[#f2ead9]/90 uppercase sm:text-xl md:text-2xl">
                     Portfolio · Edisi 2026 · Website Developer · Karawang
                 </p>
             </div>
@@ -239,7 +241,7 @@ const stack = [
                                 adalah sistem yang siap diisi. Tambah proyek
                                 semudah tambah data.
                             </p>
-                            <p class="border-l-2 border-[#ff4d00] pl-4 text-[#f2ead9]">
+                            <p class="border-t-2 border-[#ff4d00] pt-4 text-[#f2ead9]">
                                 Terbuka untuk kolaborasi: proyek freelance,
                                 eksperimen antarmuka, dan arsip digital yang
                                 butuh ketelitian.
@@ -253,10 +255,10 @@ const stack = [
                             <h3 class="font-mono2 text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">
                                 Stack yang dipakai
                             </h3>
-                            <ul class="mt-4 divide-y divide-[rgba(242,234,217,0.16)] border-y rule">
+                            <ul class="mt-4 divide-y divide-[var(--hairline)] border-y rule">
                                 {stack.map((s) => (
                                     <li class="flex items-center justify-between py-3">
-                                        <span class="text-[15px] font-medium text-[#f2ead9]">
+                                        <span class="text-base font-medium text-[#f2ead9]">
                                             {s}
                                         </span>
                                         <span
@@ -336,7 +338,13 @@ const stack = [
                                         src={p.plate}
                                         alt={p.alt}
                                         loading={i < 2 ? "eager" : "lazy"}
-                                        class="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-[1.02]"
+                                        decoding="async"
+                                        class:list={[
+                                            "w-full object-cover transition-transform duration-700 hover:scale-[1.02]",
+                                            i === 0
+                                                ? "aspect-[16/10]"
+                                                : "aspect-[4/3]",
+                                        ]}
                                     />
                                 </figure>
                                 <div
@@ -373,6 +381,8 @@ const stack = [
                                         <a
                                             href="#proyek"
                                             aria-label={`${p.title}, demo langsung (placeholder)`}
+                                            aria-disabled="true"
+                                            title="Placeholder — ganti dengan URL demo asli"
                                             class="bg-[#f2ead9] px-5 py-2.5 font-mono2 text-xs tracking-[0.18em] text-[#0c0b09] uppercase transition-transform hover:-translate-y-0.5"
                                         >
                                             Demo
@@ -380,6 +390,8 @@ const stack = [
                                         <a
                                             href="#proyek"
                                             aria-label={`${p.title}, repositori kode (placeholder)`}
+                                            aria-disabled="true"
+                                            title="Placeholder — ganti dengan URL repo asli"
                                             class="border rule px-5 py-2.5 font-mono2 text-xs tracking-[0.18em] text-[#f2ead9] uppercase transition-colors hover:border-[#ff4d00] hover:text-[#ff4d00]"
                                         >
                                             Repo
@@ -413,7 +425,7 @@ const stack = [
                     <h2
                         id="judul-kontak"
                         class="reveal font-display headline-balance mt-8 leading-[0.92] text-[#f2ead9] uppercase"
-                        style="font-size: clamp(2.75rem, 8vw, 7rem);"
+                        style="font-size: clamp(3rem, 9vw, 7.5rem);"
                         data-reveal
                     >
                         Mari buat edisi berikutnya.
@@ -497,34 +509,11 @@ const stack = [
                 .forEach((el) => io.observe(el));
 
             const video = document.querySelector("video");
-            if (video) {
+            if (video && (video.querySelector("source") || video.currentSrc)) {
                 const play = video.play();
                 if (play && typeof play.catch === "function")
                     play.catch(() => {});
             }
         </script>
-        <style>
-            .sr-only {
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                padding: 0;
-                margin: -1px;
-                overflow: hidden;
-                clip: rect(0, 0, 0, 0);
-                white-space: nowrap;
-                border-width: 0;
-            }
-            .focus\:not-sr-only:focus {
-                position: static;
-                width: auto;
-                height: auto;
-                padding: 0.5rem 1rem;
-                margin: 0;
-                overflow: visible;
-                clip: auto;
-                white-space: normal;
-            }
-        </style>
     </body>
 </html>
