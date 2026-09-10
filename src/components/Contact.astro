@@ -1,0 +1,49 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+---
+
+<section id="kontak" aria-labelledby="judul-kontak" class="scroll-mt-20">
+	<div class="mx-auto max-w-6xl px-5 py-20 md:py-28">
+		<SectionHeading left="Hal. 04 · Halaman belakang" right="Balas < 48 jam" />
+		<h2
+			id="judul-kontak"
+			class="reveal font-display headline-balance mt-8 leading-[0.92] text-[#f2ead9] uppercase"
+			style="font-size: clamp(3rem, 9vw, 7.5rem);"
+			data-reveal
+		>
+			Mari buat edisi berikutnya.
+		</h2>
+		<div class="mt-10 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+			<p class="reveal max-w-[58ch] leading-relaxed text-[#cfc4ae]" data-reveal>
+				Punya proyek, eksperimen, atau arsip yang butuh ketelitian? Kanal final
+				masih diputuskan. Untuk sekarang, sapa lewat email placeholder di bawah
+				dan saya balas dari alamat asli.
+			</p>
+			<div class="reveal flex flex-wrap gap-3" data-reveal style="--reveal-delay: 120ms;">
+				<a
+					href="mailto:halo@example.com?subject=Kolaborasi%20-%20Edisi%20berikutnya"
+					class="bg-[#ff4d00] px-6 py-3 font-mono2 text-xs tracking-[0.18em] text-[#160800] uppercase transition-transform hover:-translate-y-0.5"
+				>
+					halo@example.com
+				</a>
+				<a
+					href="#kontak"
+					aria-label="GitHub (placeholder)"
+					class="border rule px-6 py-3 font-mono2 text-xs tracking-[0.18em] text-[#f2ead9] uppercase transition-colors hover:border-[#ff4d00] hover:text-[#ff4d00]"
+				>
+					GitHub*
+				</a>
+				<a
+					href="#kontak"
+					aria-label="LinkedIn (placeholder)"
+					class="border rule px-6 py-3 font-mono2 text-xs tracking-[0.18em] text-[#f2ead9] uppercase transition-colors hover:border-[#ff4d00] hover:text-[#ff4d00]"
+				>
+					LinkedIn*
+				</a>
+			</div>
+		</div>
+		<p class="mt-6 font-mono2 text-xs text-[#cfc4ae]">
+			* Tautan bertanda bintang masih placeholder dan akan diganti URL asli.
+		</p>
+	</div>
+</section>

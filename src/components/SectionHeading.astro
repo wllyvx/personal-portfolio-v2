@@ -1,0 +1,17 @@
+---
+interface Props {
+	left: string;
+	right: string;
+}
+
+const { left, right } = Astro.props;
+---
+
+<div class="reveal flex items-center justify-between border-b rule pb-3" data-reveal>
+	<p class="font-mono2 tnum text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">
+		{left}
+	</p>
+	<p class="font-mono2 tnum text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">
+		{right}
+	</p>
+</div>

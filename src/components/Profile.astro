@@ -1,0 +1,65 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+
+interface Props {
+	stack: string[];
+}
+
+const { stack } = Astro.props;
+---
+
+<section id="profil" aria-labelledby="judul-profil" class="scroll-mt-20 border-b rule">
+	<div class="mx-auto max-w-6xl px-5 py-20 md:py-28">
+		<SectionHeading left="Hal. 02 · Profil" right="Colophon stack" />
+		<h2
+			id="judul-profil"
+			class="reveal font-display headline-balance mt-8 max-w-5xl leading-[0.95] text-[#f2ead9] uppercase"
+			style="font-size: clamp(2.25rem, 5.5vw, 5rem);"
+			data-reveal
+		>
+			Profil dulu, bukti menyusul. Saya Willy.
+		</h2>
+		<div class="mt-10 grid gap-12 md:grid-cols-12">
+			<div
+				class="reveal max-w-[70ch] space-y-5 text-base leading-relaxed text-[#cfc4ae] md:col-span-7"
+				data-reveal
+			>
+				<p>
+					Saya website developer yang bekerja dari Karawang. Fokus saya
+					adalah halaman yang cepat, terbaca, dan punya pendirian visual.
+					Setiap gerak menjelaskan sesuatu, bukan hiasan.
+				</p>
+				<p>
+					Cara saya bekerja: mulai dari struktur dan konten nyata, lalu
+					tipografi dan motion mengikutinya. Yang Anda lihat di edisi ini
+					adalah sistem yang siap diisi. Tambah proyek semudah tambah data.
+				</p>
+				<p class="border-t-2 border-[#ff4d00] pt-4 text-[#f2ead9]">
+					Terbuka untuk kolaborasi: proyek freelance, eksperimen antarmuka,
+					dan arsip digital yang butuh ketelitian.
+				</p>
+			</div>
+			<div class="reveal md:col-span-5" data-reveal style="--reveal-delay: 120ms;">
+				<h3 class="font-mono2 text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">
+					Stack yang dipakai
+				</h3>
+				<ul class="mt-4 divide-y divide-[var(--hairline)] border-y rule">
+					{
+						stack.map((s) => (
+							<li class="flex items-center justify-between py-3">
+								<span class="text-base font-medium text-[#f2ead9]">
+									{s}
+								</span>
+								<span class="h-1.5 w-1.5 bg-[#ff4d00]" aria-hidden="true" />
+							</li>
+						))
+					}
+				</ul>
+				<p class="mt-4 font-mono2 tnum text-xs leading-relaxed text-[#cfc4ae]">
+					Catatan jujur: daftar pengalaman dan CV menyusul. Yang dummy
+					terlihat dummy, tidak menyamar.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>

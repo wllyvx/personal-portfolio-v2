@@ -1,0 +1,65 @@
+<section aria-labelledby="judul-utama" class="relative flex min-h-svh flex-col overflow-hidden pt-14">
+	<div class="absolute inset-0" aria-hidden="true">
+		<img
+			src="/hero-poster.svg"
+			alt=""
+			class="hero-drift h-full w-full object-cover"
+			fetchpriority="high"
+			decoding="async"
+		/>
+		<video
+			class="absolute inset-0 h-full w-full object-cover opacity-0"
+			autoplay
+			muted
+			loop
+			playsinline
+			poster="/hero-poster.svg"
+			aria-hidden="true"
+			tabindex="-1"
+		>
+			{/* Sumber video final belum diputuskan: poster tampil sebagai pengganti */}
+		</video>
+		<div class="absolute inset-0 bg-[#0c0b09]/55"></div>
+		<div
+			class="absolute inset-x-0 bottom-0 h-48 bg-[#0c0b09]/70"
+			style="mask-image: linear-gradient(to top, black, transparent);"
+		></div>
+	</div>
+
+	<div class="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-end px-5 pt-16 pb-10">
+		<h1
+			id="judul-utama"
+			class="reveal font-display headline-balance mt-6 leading-[0.92] text-[#f2ead9] uppercase"
+			style="font-size: clamp(3rem, 9vw, 7.5rem);"
+			data-reveal
+		>
+			Willy Fajar
+			<br />
+			Ramadhan
+		</h1>
+		<div
+			class="reveal mt-6 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
+			data-reveal
+			style="--reveal-delay: 120ms;"
+		>
+			<p class="max-w-[42ch] text-lg leading-relaxed text-[#cfc4ae]">
+				Website developer. Saya membangun antarmuka yang terbaca seperti
+				editorial dan bergerak seperti siaran. Karya memimpin, interface mundur.
+			</p>
+			<div class="flex flex-wrap items-center gap-3">
+				<a
+					href="#proyek"
+					class="bg-[#f2ead9] px-6 py-3 font-mono2 text-xs tracking-[0.18em] text-[#0c0b09] uppercase transition-transform hover:-translate-y-0.5"
+				>
+					Lihat Proyek
+				</a>
+				<a
+					href="#kontak"
+					class="border rule px-6 py-3 font-mono2 text-xs tracking-[0.18em] text-[#f2ead9] uppercase transition-colors hover:border-[#ff4d00] hover:text-[#ff4d00]"
+				>
+					Kontak
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

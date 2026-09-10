@@ -1,0 +1,90 @@
+---
+import type { Project } from "../data/content";
+
+interface Props {
+	project: Project;
+	index: number;
+}
+
+const { project: p, index: i } = Astro.props;
+---
+
+<article
+	aria-labelledby={`proyek-${p.no}`}
+	class:list={[
+		"reveal grid items-start gap-8 border-t-2 border-[#f2ead9]/80 pt-8 md:gap-12",
+		"md:grid-cols-12",
+	]}
+	data-reveal
+>
+	<figure
+		class:list={[
+			"overflow-hidden border rule bg-[#14120f]",
+			i === 0
+				? "md:col-span-7"
+				: i % 2 === 0
+					? "md:col-span-5 md:order-2"
+					: "md:col-span-7",
+		]}
+	>
+		<img
+			src={p.plate}
+			alt={p.alt}
+			loading={i < 2 ? "eager" : "lazy"}
+			decoding="async"
+			class:list={[
+				"w-full object-cover transition-transform duration-700 hover:scale-[1.02]",
+				i === 0 ? "aspect-[16/10]" : "aspect-[4/3]",
+			]}
+		/>
+	</figure>
+	<div
+		class={
+			i === 0
+				? "md:col-span-5"
+				: i % 2 === 0
+					? "md:col-span-7 md:order-1"
+					: "md:col-span-5"
+		}
+	>
+		<p class="flex flex-wrap items-center gap-3 font-mono2 tnum text-[11px] tracking-[0.18em] uppercase">
+			<span class="text-[#ff4d00]">No. {p.no}</span>
+			<span class="border border-dashed border-[#ff4d00]/70 px-2 py-0.5 text-[#cfc4ae]">
+				Placeholder
+			</span>
+		</p>
+		<h3
+			id={`proyek-${p.no}`}
+			class="font-display headline-balance mt-4 leading-[0.95] text-[#f2ead9] uppercase"
+			style="font-size: clamp(1.75rem, 3.5vw, 3rem);"
+		>
+			{p.title}
+		</h3>
+		<p class="mt-4 max-w-[62ch] leading-relaxed text-[#cfc4ae]">
+			{p.desc}
+		</p>
+		<p class="mt-4 font-mono2 tnum text-xs tracking-wide text-[#cfc4ae]">
+			{p.role} &nbsp;·&nbsp; {p.year}
+		</p>
+		<div class="mt-6 flex flex-wrap gap-3">
+			<a
+				href="#proyek"
+				aria-label={`${p.title}, demo langsung (placeholder)`}
+				aria-disabled="true"
+				title="Placeholder — ganti dengan URL demo asli"
+				class="bg-[#f2ead9] px-5 py-2.5 font-mono2 text-xs tracking-[0.18em] text-[#0c0b09] uppercase transition-transform hover:-translate-y-0.5"
+			>
+				Demo
+			</a>
+			<a
+				href="#proyek"
+				aria-label={`${p.title}, repositori kode (placeholder)`}
+				aria-disabled="true"
+				title="Placeholder — ganti dengan URL repo asli"
+				class="border rule px-5 py-2.5 font-mono2 text-xs tracking-[0.18em] text-[#f2ead9] uppercase transition-colors hover:border-[#ff4d00] hover:text-[#ff4d00]"
+			>
+				Repo
+			</a>
+		</div>
+	</div>
+</article>
