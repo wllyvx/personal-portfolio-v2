@@ -129,7 +129,6 @@ const stack = [
                         src="/hero-poster.svg"
                         alt=""
                         class="hero-drift h-full w-full object-cover"
-                        data-drift="0.04"
                         fetchpriority="high"
                     />
                     <video
@@ -189,18 +188,11 @@ const stack = [
                 </div>
             </section>
 
-            <!-- Marquee -->
+            <!-- Edisi strip (static, no motion) -->
             <div class="overflow-hidden border-y rule py-3" aria-hidden="true">
-                <div class="marquee-track flex w-max gap-8 whitespace-nowrap">
-                    <span class="font-display text-2xl text-[#f2ead9]/90 uppercase">
-                        Portfolio · Edisi 2026 · Website Developer · Karawang
-                        ·&nbsp;
-                    </span>
-                    <span class="font-display text-2xl text-[#f2ead9]/90 uppercase">
-                        Portfolio · Edisi 2026 · Website Developer · Karawang
-                        ·&nbsp;
-                    </span>
-                </div>
+                <p class="truncate px-5 text-center font-display text-2xl text-[#f2ead9]/90 uppercase">
+                    Portfolio · Edisi 2026 · Website Developer · Karawang
+                </p>
             </div>
 
             <!-- Profil -->
@@ -489,10 +481,6 @@ const stack = [
         </footer>
 
         <script>
-            const reduce = window.matchMedia(
-                "(prefers-reduced-motion: reduce)",
-            ).matches;
-
             const io = new IntersectionObserver(
                 (entries) => {
                     for (const e of entries) {
@@ -507,28 +495,6 @@ const stack = [
             document
                 .querySelectorAll("[data-reveal]")
                 .forEach((el) => io.observe(el));
-
-            if (!reduce) {
-                const layers = Array.from(
-                    document.querySelectorAll("[data-drift]"),
-                );
-                let ticking = false;
-                const onScroll = () => {
-                    if (ticking) return;
-                    ticking = true;
-                    requestAnimationFrame(() => {
-                        const y = window.scrollY || 0;
-                        for (const layer of layers) {
-                            const f = parseFloat(
-                                layer.getAttribute("data-drift") || "0.04",
-                            );
-                            layer.style.translate = `0 ${Math.min(y * f, 60)}px`;
-                        }
-                        ticking = false;
-                    });
-                };
-                window.addEventListener("scroll", onScroll, { passive: true });
-            }
 
             const video = document.querySelector("video");
             if (video) {
