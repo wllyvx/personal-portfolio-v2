@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Sampul geometris proyek empat">
+  <rect width="1200" height="900" fill="#0c0b09"/>
+  <g fill="none" stroke="#4dc9ff" stroke-width="3">
+    <path d="M 0 150 Q 300 120 600 150 T 1200 150" stroke-opacity="0.15"/>
+    <path d="M 0 250 Q 300 200 600 250 T 1200 250" stroke-opacity="0.25"/>
+    <path d="M 0 350 Q 300 280 600 350 T 1200 350" stroke-opacity="0.4"/>
+    <path d="M 0 450 Q 300 360 600 450 T 1200 450" stroke-opacity="0.6"/>
+    <path d="M 0 550 Q 300 460 600 550 T 1200 550" stroke="#ff4d00" stroke-opacity="0.9" stroke-width="4"/>
+    <path d="M 0 650 Q 300 580 600 650 T 1200 650" stroke-opacity="0.35"/>
+    <path d="M 0 750 Q 300 700 600 750 T 1200 750" stroke-opacity="0.2"/>
+  </g>
+  <circle cx="600" cy="550" r="12" fill="#ff4d00"/>
+  <line x1="600" y1="120" x2="600" y2="780" stroke="#f2ead9" stroke-opacity="0.2" stroke-width="2"/>
+</svg>

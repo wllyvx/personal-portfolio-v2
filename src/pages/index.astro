@@ -1,17 +1,420 @@
 ---
+import "../styles/global.css";
 
+const projects = [
+  {
+    no: "01",
+    title: "Arus Balik: Dashboard Operasional",
+    desc: "Placeholder: ringkasan satu kalimat tentang masalah, peran, dan hasil akan tinggal di sini. Ganti dengan studi kasus asli.",
+    role: "Peran: placeholder",
+    year: "Tahun: 20XX",
+    plate: "/plates/proyek-01.svg",
+    alt: "Sampul geometris: rel kalibrasi dengan garis emisi",
+  },
+  {
+    no: "02",
+    title: "Tabung Angka: Visualisasi Metrik",
+    desc: "Placeholder: apa yang diukur, untuk siapa, dan keputusan apa yang dibantu. Ganti dengan proyek nyata.",
+    role: "Peran: placeholder",
+    year: "Tahun: 20XX",
+    plate: "/plates/proyek-02.svg",
+    alt: "Sampul geometris: tiga bank digit",
+  },
+  {
+    no: "03",
+    title: "Rangkaian Tanda: Identitas Interaktif",
+    desc: "Placeholder: konteks brand, batasan, dan momen interaksinya. Ganti dengan karya asli.",
+    role: "Peran: placeholder",
+    year: "Tahun: 20XX",
+    plate: "/plates/proyek-03.svg",
+    alt: "Sampul geometris: satu garis lengkung menyala",
+  },
+  {
+    no: "04",
+    title: "Laut Malam: Kanvas Partikel",
+    desc: "Placeholder: teknik yang dipakai dan batas performanya. Ganti dengan eksperimen nyata.",
+    role: "Peran: placeholder",
+    year: "Tahun: 20XX",
+    plate: "/plates/proyek-04.svg",
+    alt: "Sampul geometris: garis kontur gelombang",
+  },
+  {
+    no: "05",
+    title: "Dua Tinta: Arsip Zine Digital",
+    desc: "Placeholder: arsip apa, siapa pembacanya, bagaimana dinavigasi. Ganti dengan proyek asli.",
+    role: "Peran: placeholder",
+    year: "Tahun: 20XX",
+    plate: "/plates/proyek-05.svg",
+    alt: "Sampul geometris: dua blok tinta bertumpuk",
+  },
+];
+
+const stack = ["Astro", "TypeScript", "Tailwind CSS", "Node.js", "Git", "Aksesibilitas (WCAG)"];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Portfolio Willy Fajar Ramadhan, website developer. Edisi satu halaman: profil, proyek pilihan placeholder, dan kontak."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>Willy Fajar Ramadhan | Website Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="antialiased">
+    <a
+      href="#isi"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-[#ff4d00] focus:px-4 focus:py-2 focus:font-mono focus:text-sm focus:text-[#160800]"
+    >
+      Lewati ke isi
+    </a>
+
+    <!-- Edition rail -->
+    <header class="fixed inset-x-0 top-0 z-50 border-b rule bg-[#0c0b09]/90 backdrop-blur-sm">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3">
+        <p class="font-mono2 tnum text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">
+          Vol.02 · 2026 · Jakarta
+        </p>
+        <nav aria-label="Navigasi edisi" class="flex items-center gap-5">
+          <a href="#profil" class="font-mono2 text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase transition-colors hover:text-[#f2ead9]">Profil</a>
+          <a href="#proyek" class="font-mono2 text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase transition-colors hover:text-[#f2ead9]">Proyek</a>
+          <a
+            href="#kontak"
+            class="bg-[#ff4d00] px-3 py-1.5 font-mono2 text-[11px] tracking-[0.18em] text-[#160800] uppercase transition-transform hover:-translate-y-0.5"
+          >
+            Kontak
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="isi">
+      <!-- Sampul -->
+      <section aria-labelledby="judul-utama" class="relative flex min-h-svh flex-col overflow-hidden pt-14">
+        <div class="absolute inset-0" aria-hidden="true">
+          <img
+            src="/hero-poster.svg"
+            alt=""
+            class="hero-drift h-full w-full object-cover"
+            data-drift="0.04"
+            fetchpriority="high"
+          />
+          <video
+            class="absolute inset-0 h-full w-full object-cover opacity-0"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="/hero-poster.svg"
+            aria-label="Video latar sampul (placeholder, belum ada file final)"
+          >
+            {/* Sumber video final belum diputuskan: poster tampil sebagai pengganti */}
+          </video>
+          <div class="absolute inset-0 bg-[#0c0b09]/55"></div>
+          <div class="absolute inset-x-0 bottom-0 h-48 bg-[#0c0b09]/70" style="mask-image: linear-gradient(to top, black, transparent);"></div>
+        </div>
+
+        <div class="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-end px-5 pt-16 pb-10">
+          <h1
+            id="judul-utama"
+            class="reveal font-display headline-balance mt-6 leading-[0.92] text-[#f2ead9] uppercase"
+            style="font-size: clamp(3rem, 9vw, 7.5rem);"
+            data-reveal
+          >
+            Willy Fajar<br />Ramadhan
+          </h1>
+          <div class="reveal mt-6 flex flex-col gap-6 md:flex-row md:items-end md:justify-between" data-reveal style="--reveal-delay: 120ms;">
+            <p class="max-w-[42ch] text-lg leading-relaxed text-[#cfc4ae]">
+              Website developer. Saya membangun antarmuka yang terbaca seperti
+              editorial dan bergerak seperti siaran. Karya memimpin, interface mundur.
+            </p>
+            <div class="flex flex-wrap items-center gap-3">
+              <a
+                href="#proyek"
+                class="bg-[#f2ead9] px-6 py-3 font-mono2 text-xs tracking-[0.18em] text-[#0c0b09] uppercase transition-transform hover:-translate-y-0.5"
+              >
+                Lihat Proyek
+              </a>
+              <a
+                href="#kontak"
+                class="border rule px-6 py-3 font-mono2 text-xs tracking-[0.18em] text-[#f2ead9] uppercase transition-colors hover:border-[#ff4d00] hover:text-[#ff4d00]"
+              >
+                Kontak
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Marquee -->
+      <div class="overflow-hidden border-y rule py-3" aria-hidden="true">
+        <div class="marquee-track flex w-max gap-8 whitespace-nowrap">
+          <span class="font-display text-2xl text-[#f2ead9]/90 uppercase">Portfolio · Edisi 2026 · Website Developer · Jakarta ·&nbsp;</span>
+          <span class="font-display text-2xl text-[#f2ead9]/90 uppercase">Portfolio · Edisi 2026 · Website Developer · Jakarta ·&nbsp;</span>
+        </div>
+      </div>
+
+      <!-- Profil -->
+      <section id="profil" aria-labelledby="judul-profil" class="scroll-mt-20 border-b rule">
+        <div class="mx-auto max-w-6xl px-5 py-20 md:py-28">
+          <div class="reveal flex items-center justify-between border-b rule pb-3" data-reveal>
+            <p class="font-mono2 tnum text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">Hal. 02 · Profil</p>
+            <p class="font-mono2 tnum text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">Colophon stack</p>
+          </div>
+          <h2
+            id="judul-profil"
+            class="reveal font-display headline-balance mt-8 max-w-5xl leading-[0.95] text-[#f2ead9] uppercase"
+            style="font-size: clamp(2.25rem, 5.5vw, 5rem);"
+            data-reveal
+          >
+            Profil dulu, bukti menyusul. Saya Willy.
+          </h2>
+          <div class="mt-10 grid gap-12 md:grid-cols-12">
+            <div class="reveal max-w-[70ch] space-y-5 text-base leading-relaxed text-[#cfc4ae] md:col-span-7" data-reveal>
+              <p>
+                Saya website developer yang bekerja dari Jakarta. Fokus saya
+                adalah halaman yang cepat, terbaca, dan punya pendirian visual.
+                Setiap gerak menjelaskan sesuatu, bukan hiasan.
+              </p>
+              <p>
+                Cara saya bekerja: mulai dari struktur dan konten nyata, lalu
+                tipografi dan motion mengikutinya. Yang Anda lihat di edisi ini
+                adalah sistem yang siap diisi. Tambah proyek semudah tambah data.
+              </p>
+              <p class="border-l-2 border-[#ff4d00] pl-4 text-[#f2ead9]">
+                Terbuka untuk kolaborasi: proyek freelance, eksperimen antarmuka,
+                dan arsip digital yang butuh ketelitian.
+              </p>
+            </div>
+            <div class="reveal md:col-span-5" data-reveal style="--reveal-delay: 120ms;">
+              <h3 class="font-mono2 text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">Stack yang dipakai</h3>
+              <ul class="mt-4 divide-y divide-[rgba(242,234,217,0.16)] border-y rule">
+                {stack.map((s) => (
+                  <li class="flex items-center justify-between py-3">
+                    <span class="text-[15px] font-medium text-[#f2ead9]">{s}</span>
+                    <span class="h-1.5 w-1.5 bg-[#ff4d00]" aria-hidden="true"></span>
+                  </li>
+                ))}
+              </ul>
+              <p class="mt-4 font-mono2 tnum text-xs leading-relaxed text-[#cfc4ae]">
+                Catatan jujur: daftar pengalaman dan CV menyusul. Yang dummy
+                terlihat dummy, tidak menyamar.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Proyek -->
+      <section id="proyek" aria-labelledby="judul-proyek" class="scroll-mt-20 border-b rule">
+        <div class="mx-auto max-w-6xl px-5 py-20 md:py-28">
+          <div class="reveal flex items-center justify-between border-b rule pb-3" data-reveal>
+            <p class="font-mono2 tnum text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">Hal. 03 · Proyek pilihan</p>
+            <p class="font-mono2 tnum text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">5 fitur / 0 klaim palsu</p>
+          </div>
+          <h2
+            id="judul-proyek"
+            class="reveal font-display headline-balance mt-8 leading-[0.95] text-[#f2ead9] uppercase"
+            style="font-size: clamp(2.25rem, 5.5vw, 5rem);"
+            data-reveal
+          >
+            Lima fitur, satu bahasa bentuk.
+          </h2>
+          <p class="reveal mt-5 max-w-[70ch] leading-relaxed text-[#cfc4ae]" data-reveal>
+            Setiap entri di bawah ini placeholder berlabel. Struktur datanya
+            sudah final: judul, deskripsi, peran, tahun, tautan, dan visual
+            besar, sehingga karya asli tinggal menggantikan isinya.
+          </p>
+
+          <div class="mt-14 space-y-16 md:space-y-24">
+            {projects.map((p, i) => (
+              <article
+                aria-labelledby={`proyek-${p.no}`}
+                class:list={[
+                  "reveal grid items-start gap-8 border-t-2 border-[#f2ead9]/80 pt-8 md:gap-12",
+                  "md:grid-cols-12",
+                ]}
+                data-reveal
+              >
+                <figure class:list={["overflow-hidden border rule bg-[#14120f]", i === 0 ? "md:col-span-7" : i % 2 === 0 ? "md:col-span-5 md:order-2" : "md:col-span-7"]}>
+                  <img
+                    src={p.plate}
+                    alt={p.alt}
+                    loading={i < 2 ? "eager" : "lazy"}
+                    class="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-[1.02]"
+                  />
+                </figure>
+                <div class={i === 0 ? "md:col-span-5" : i % 2 === 0 ? "md:col-span-7 md:order-1" : "md:col-span-5"}>
+                  <p class="flex flex-wrap items-center gap-3 font-mono2 tnum text-[11px] tracking-[0.18em] uppercase">
+                    <span class="text-[#ff4d00]">No. {p.no}</span>
+                    <span class="border border-dashed border-[#ff4d00]/70 px-2 py-0.5 text-[#cfc4ae]">Placeholder</span>
+                  </p>
+                  <h3 id={`proyek-${p.no}`} class="font-display headline-balance mt-4 leading-[0.95] text-[#f2ead9] uppercase" style="font-size: clamp(1.75rem, 3.5vw, 3rem);">
+                    {p.title}
+                  </h3>
+                  <p class="mt-4 max-w-[62ch] leading-relaxed text-[#cfc4ae]">{p.desc}</p>
+                  <p class="mt-4 font-mono2 tnum text-xs tracking-wide text-[#cfc4ae]">
+                    {p.role} &nbsp;·&nbsp; {p.year}
+                  </p>
+                  <div class="mt-6 flex flex-wrap gap-3">
+                    <a
+                      href="#proyek"
+                      aria-label={`${p.title}, demo langsung (placeholder)`}
+                      class="bg-[#f2ead9] px-5 py-2.5 font-mono2 text-xs tracking-[0.18em] text-[#0c0b09] uppercase transition-transform hover:-translate-y-0.5"
+                    >
+                      Demo
+                    </a>
+                    <a
+                      href="#proyek"
+                      aria-label={`${p.title}, repositori kode (placeholder)`}
+                      class="border rule px-5 py-2.5 font-mono2 text-xs tracking-[0.18em] text-[#f2ead9] uppercase transition-colors hover:border-[#ff4d00] hover:text-[#ff4d00]"
+                    >
+                      Repo
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Kontak -->
+      <section id="kontak" aria-labelledby="judul-kontak" class="scroll-mt-20">
+        <div class="mx-auto max-w-6xl px-5 py-20 md:py-28">
+          <div class="reveal flex items-center justify-between border-b rule pb-3" data-reveal>
+            <p class="font-mono2 tnum text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">Hal. 04 · Halaman belakang</p>
+            <p class="font-mono2 tnum text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">Balas &lt; 48 jam</p>
+          </div>
+          <h2
+            id="judul-kontak"
+            class="reveal font-display headline-balance mt-8 leading-[0.92] text-[#f2ead9] uppercase"
+            style="font-size: clamp(2.75rem, 8vw, 7rem);"
+            data-reveal
+          >
+            Mari buat edisi berikutnya.
+          </h2>
+          <div class="mt-10 flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+            <p class="reveal max-w-[58ch] leading-relaxed text-[#cfc4ae]" data-reveal>
+              Punya proyek, eksperimen, atau arsip yang butuh ketelitian?
+              Kanal final masih diputuskan. Untuk sekarang, sapa lewat email
+              placeholder di bawah dan saya balas dari alamat asli.
+            </p>
+            <div class="reveal flex flex-wrap gap-3" data-reveal style="--reveal-delay: 120ms;">
+              <a
+                href="mailto:halo@example.com?subject=Kolaborasi%20-%20Edisi%20berikutnya"
+                class="bg-[#ff4d00] px-6 py-3 font-mono2 text-xs tracking-[0.18em] text-[#160800] uppercase transition-transform hover:-translate-y-0.5"
+              >
+                halo@example.com
+              </a>
+              <a
+                href="#kontak"
+                aria-label="GitHub (placeholder)"
+                class="border rule px-6 py-3 font-mono2 text-xs tracking-[0.18em] text-[#f2ead9] uppercase transition-colors hover:border-[#ff4d00] hover:text-[#ff4d00]"
+              >
+                GitHub*
+              </a>
+              <a
+                href="#kontak"
+                aria-label="LinkedIn (placeholder)"
+                class="border rule px-6 py-3 font-mono2 text-xs tracking-[0.18em] text-[#f2ead9] uppercase transition-colors hover:border-[#ff4d00] hover:text-[#ff4d00]"
+              >
+                LinkedIn*
+              </a>
+            </div>
+          </div>
+          <p class="mt-6 font-mono2 text-xs text-[#cfc4ae]">* Tautan bertanda bintang masih placeholder dan akan diganti URL asli.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t rule">
+      <div class="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-8 md:flex-row md:items-center md:justify-between">
+        <p class="font-mono2 tnum text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">
+          © 2026 Willy Fajar Ramadhan · Vol.02
+        </p>
+        <p class="font-mono2 text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">
+          Set in Anton, Archivo, JetBrains Mono
+        </p>
+        <a href="#isi" class="font-mono2 text-[11px] tracking-[0.18em] text-[#f2ead9] uppercase underline decoration-[#ff4d00] decoration-2 underline-offset-4 hover:text-[#ff4d00]">
+          Kembali ke sampul
+        </a>
+      </div>
+    </footer>
+
+    <script>
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add("is-in");
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      );
+      document.querySelectorAll("[data-reveal]").forEach((el) => io.observe(el));
+
+      if (!reduce) {
+        const layers = Array.from(document.querySelectorAll("[data-drift]"));
+        let ticking = false;
+        const onScroll = () => {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(() => {
+            const y = window.scrollY || 0;
+            for (const layer of layers) {
+              const f = parseFloat(layer.getAttribute("data-drift") || "0.04");
+              layer.style.translate = `0 ${Math.min(y * f, 60)}px`;
+            }
+            ticking = false;
+          });
+        };
+        window.addEventListener("scroll", onScroll, { passive: true });
+      }
+
+      const video = document.querySelector("video");
+      if (video) {
+        const play = video.play();
+        if (play && typeof play.catch === "function") play.catch(() => {});
+      }
+    </script>
+
+    <style>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+      .focus\:not-sr-only:focus {
+        position: static;
+        width: auto;
+        height: auto;
+        padding: 0.5rem 1rem;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+      }
+    </style>
+  </body>
 </html>
