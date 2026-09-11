@@ -49,9 +49,6 @@ const { project: p, index: i } = Astro.props;
 	>
 		<p class="flex flex-wrap items-center gap-3 font-mono2 tnum text-[11px] tracking-[0.18em] uppercase">
 			<span class="text-[#ff4d00]">No. {p.no}</span>
-			<span class="border border-dashed border-[#ff4d00]/70 px-2 py-0.5 text-[#cfc4ae]">
-				Placeholder
-			</span>
 		</p>
 		<h3
 			id={`proyek-${p.no}`}
@@ -69,18 +66,18 @@ const { project: p, index: i } = Astro.props;
 		<div class="mt-6 flex flex-wrap gap-3">
 			<a
 				href="#proyek"
-				aria-label={`${p.title}, demo langsung (placeholder)`}
+				aria-label={`${p.title}, demo langsung (menyusul)`}
 				aria-disabled="true"
-				title="Placeholder — ganti dengan URL demo asli"
+				title="Tautan demo menyusul"
 				class="bg-[#f2ead9] px-5 py-2.5 font-mono2 text-xs tracking-[0.18em] text-[#0c0b09] uppercase transition-transform hover:-translate-y-0.5"
 			>
 				Demo
 			</a>
 			<a
 				href="#proyek"
-				aria-label={`${p.title}, repositori kode (placeholder)`}
+				aria-label={`${p.title}, repositori kode (menyusul)`}
 				aria-disabled="true"
-				title="Placeholder — ganti dengan URL repo asli"
+				title="Tautan repo menyusul"
 				class="border rule px-5 py-2.5 font-mono2 text-xs tracking-[0.18em] text-[#f2ead9] uppercase transition-colors hover:border-[#ff4d00] hover:text-[#ff4d00]"
 			>
 				Repo

@@ -12,7 +12,7 @@ export const projects: Project[] = [
 	{
 		no: "01",
 		title: "Arus Balik: Dashboard Operasional",
-		desc: "Placeholder: ringkasan satu kalimat tentang masalah, peran, dan hasil akan tinggal di sini. Ganti dengan studi kasus asli.",
+		desc: "Ringkasan masalah, peran, dan hasil akan ada di sini begitu proyek asli masuk.",
 		role: "Peran: placeholder",
 		year: "Tahun: 20XX",
 		plate: "/plates/proyek-01.svg",
@@ -21,7 +21,7 @@ export const projects: Project[] = [
 	{
 		no: "02",
 		title: "Tabung Angka: Visualisasi Metrik",
-		desc: "Placeholder: apa yang diukur, untuk siapa, dan keputusan apa yang dibantu. Ganti dengan proyek nyata.",
+		desc: "Apa yang diukur, untuk siapa, dan keputusan apa yang dibantu — detailnya menyusul bareng proyek aslinya.",
 		role: "Peran: placeholder",
 		year: "Tahun: 20XX",
 		plate: "/plates/proyek-02.svg",
@@ -30,7 +30,7 @@ export const projects: Project[] = [
 	{
 		no: "03",
 		title: "Rangkaian Tanda: Identitas Interaktif",
-		desc: "Placeholder: konteks brand, batasan, dan momen interaksinya. Ganti dengan karya asli.",
+		desc: "Konteks brand, batasan, dan momen interaksinya akan diisi begitu karya aslinya masuk.",
 		role: "Peran: placeholder",
 		year: "Tahun: 20XX",
 		plate: "/plates/proyek-03.svg",
@@ -39,7 +39,7 @@ export const projects: Project[] = [
 	{
 		no: "04",
 		title: "Laut Malam: Kanvas Partikel",
-		desc: "Placeholder: teknik yang dipakai dan batas performanya. Ganti dengan eksperimen nyata.",
+		desc: "Teknik yang dipakai dan batas performanya akan dijelaskan di sini nanti.",
 		role: "Peran: placeholder",
 		year: "Tahun: 20XX",
 		plate: "/plates/proyek-04.svg",
@@ -48,7 +48,7 @@ export const projects: Project[] = [
 	{
 		no: "05",
 		title: "Dua Tinta: Arsip Zine Digital",
-		desc: "Placeholder: arsip apa, siapa pembacanya, bagaimana dinavigasi. Ganti dengan proyek asli.",
+		desc: "Arsip apa, siapa pembacanya, dan cara navigasinya — detailnya menyusul.",
 		role: "Peran: placeholder",
 		year: "Tahun: 20XX",
 		plate: "/plates/proyek-05.svg",
