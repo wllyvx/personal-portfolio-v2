@@ -105,9 +105,28 @@ body {
     filter: none !important;
     transition: none !important;
   }
-  .hero-drift {
+  .hero-drift,
+  .edition-marquee-track {
     animation: none !important;
   }
+}
+
+@keyframes edition-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.edition-marquee-track {
+  animation: edition-marquee 22s linear infinite;
+  will-change: transform;
+}
+
+.edition-marquee:hover .edition-marquee-track {
+  animation-play-state: paused;
 }
 
 @keyframes drift {
