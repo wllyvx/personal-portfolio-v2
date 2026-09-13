@@ -7,12 +7,17 @@ import Profile from "../components/Profile.astro";
 import ProjectsSection from "../components/ProjectsSection.astro";
 import Contact from "../components/Contact.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import { projects, stack } from "../data/content";
+import { getCollection } from "astro:content";
+import { stack } from "../data/content";
+
+const projects = (await getCollection("proyek", ({ data }) => !data.draft)).sort(
+	(a, b) => a.data.order - b.data.order,
+);
 ---
 
 <BaseLayout
 	title="Willy Fajar Ramadhan | Website Developer"
-	description="Portfolio Willy Fajar Ramadhan, website developer. Edisi satu halaman: profil, proyek pilihan placeholder, dan kontak."
+	description="Portfolio Willy Fajar Ramadhan, website developer. Edisi satu halaman: profil, proyek pilihan, dan kontak."
 >
 	<SiteHeader />
 

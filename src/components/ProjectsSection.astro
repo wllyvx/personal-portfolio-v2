@@ -1,34 +1,46 @@
 ---
-import type { Project } from "../data/content";
+import type { CollectionEntry } from "astro:content";
 import SectionHeading from "./SectionHeading.astro";
 import ProjectCard from "./ProjectCard.astro";
 
 interface Props {
-	projects: Project[];
+	projects: CollectionEntry<"proyek">[];
 }
 
 const { projects } = Astro.props;
+const count = projects.length;
 ---
 
 <section id="proyek" aria-labelledby="judul-proyek" class="scroll-mt-20 border-b rule">
 	<div class="mx-auto max-w-6xl px-5 py-20 md:py-28">
-		<SectionHeading left="Hal. 03 · Proyek pilihan" right="5 fitur / 0 klaim palsu" />
+		<SectionHeading left="Hal. 03 · Proyek pilihan" right={`${count} karya / 0 klaim palsu`} />
 		<h2
 			id="judul-proyek"
 			class="reveal font-display headline-balance mt-8 leading-[0.95] text-[#f2ead9] uppercase"
 			style="font-size: clamp(2.25rem, 5.5vw, 5rem);"
 			data-reveal
 		>
-			Lima fitur, satu bahasa bentuk.
+			Karya terpilih, satu bahasa bentuk.
 		</h2>
 		<p class="reveal mt-5 max-w-[70ch] leading-relaxed text-[#cfc4ae]" data-reveal>
-			Setiap entri di bawah ini placeholder berlabel. Struktur datanya sudah
-			final: judul, deskripsi, peran, tahun, tautan, dan visual besar, sehingga
-			karya asli tinggal menggantikan isinya.
+			Setiap entri di bawah ini terbit dari koleksi Proyek: judul,
+			ringkasan, peran, tahun, dan visual besar. Karya baru terbit tanpa
+			menyentuh komponen.
 		</p>
 
-		<div class="mt-14 space-y-16 md:space-y-24">
-			{projects.map((p, i) => <ProjectCard project={p} index={i} />)}
-		</div>
+		{
+			count > 0 ? (
+				<div class="mt-14 space-y-16 md:space-y-24">
+					{projects.map((entry, i) => (
+						<ProjectCard project={entry} index={i} />
+					))}
+				</div>
+			) : (
+				<p class="mt-14 border border-dashed border-[#f2ead9]/30 px-6 py-10 text-center leading-relaxed text-[#cfc4ae]">
+					Belum ada karya terbit. Proyek yang ditandai Draft tersimpan di
+					koleksi dan tidak tampil di sini.
+				</p>
+			)
+		}
 	</div>
 </section>
