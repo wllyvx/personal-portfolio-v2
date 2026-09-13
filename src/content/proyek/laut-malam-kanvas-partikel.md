@@ -5,7 +5,7 @@ role: "Peran: placeholder"
 year: "Tahun: 20XX"
 cover: "../../assets/proyek-04.svg"
 coverAlt: "Sampul geometris: garis kontur gelombang"
-draft: true
+draft: false
 order: 4
 ---
 

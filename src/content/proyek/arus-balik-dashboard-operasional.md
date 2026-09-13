@@ -5,7 +5,7 @@ role: "Peran: placeholder"
 year: "Tahun: 20XX"
 cover: "../../assets/proyek-01.svg"
 coverAlt: "Sampul geometris: rel kalibrasi dengan garis emisi"
-draft: true
+draft: false
 order: 1
 ---
 
