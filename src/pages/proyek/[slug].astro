@@ -73,7 +73,7 @@ const { Content } = await render(entry);
 			{
 				p.topics && p.topics.length > 0 && (
 					<ul class="reveal mt-4 flex flex-wrap gap-2" data-reveal>
-						{p.topics.map((topic) => (
+						{p.topics.map((topic: string) => (
 							<li class="border border-dashed border-[#ff4d00]/70 px-2 py-0.5 font-mono2 text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">
 								{topic}
 							</li>
