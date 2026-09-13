@@ -1,12 +1,26 @@
 ---
 import "../styles/global.css";
+import {
+	SITE_LOCALE,
+	SITE_NAME,
+	absoluteUrl,
+	DEFAULT_OG_IMAGE,
+} from "../lib/site";
 
 interface Props {
 	title: string;
 	description: string;
+	image?: string;
+	type?: "website" | "article";
 }
 
-const { title, description } = Astro.props;
+const {
+	title,
+	description,
+	image = DEFAULT_OG_IMAGE,
+	type = "website",
+} = Astro.props;
+const ogImage = absoluteUrl(Astro.site, image);
 ---
 
 <html lang="id">
@@ -15,6 +29,16 @@ const { title, description } = Astro.props;
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content={type} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:locale" content={SITE_LOCALE} />
+		<meta property="og:site_name" content={SITE_NAME} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<title>{title}</title>
