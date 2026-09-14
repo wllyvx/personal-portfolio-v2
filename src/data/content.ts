@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export interface Project {
 	no: string;
 	title: string;
@@ -56,6 +57,8 @@ export const projects: Project[] = [
 	},
 ];
 
+=======
+>>>>>>> 8bb215828e7d3e118b92279b300fe3c0dcc31770
 export const stack: string[] = [
 	"Astro",
 	"TypeScript",

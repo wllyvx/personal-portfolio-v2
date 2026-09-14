@@ -7,7 +7,10 @@ import Profile from "../components/Profile.astro";
 import ProjectsSection from "../components/ProjectsSection.astro";
 import Contact from "../components/Contact.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import { projects, stack } from "../data/content";
+import { getPublishedProyek } from "../lib/proyek";
+import { stack } from "../data/content";
+
+const projects = await getPublishedProyek();
 ---
 
 <BaseLayout

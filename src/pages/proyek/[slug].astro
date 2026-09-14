@@ -1,0 +1,215 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import { render } from "astro:content";
+import { Image } from "astro:assets";
+import {
+	getPublishedProyek,
+	proyekSlug,
+	type ProyekEntry,
+} from "../../lib/proyek";
+
+export async function getStaticPaths() {
+	const projects = await getPublishedProyek();
+	return projects.map((entry, i) => ({
+		params: { slug: proyekSlug(entry) },
+		props: {
+			entry,
+			prev: i > 0 ? projects[i - 1] : null,
+			next: i < projects.length - 1 ? projects[i + 1] : null,
+		},
+	}));
+}
+
+interface Props {
+	entry: ProyekEntry;
+	prev: ProyekEntry | null;
+	next: ProyekEntry | null;
+}
+
+const { entry, prev, next } = Astro.props;
+const p = entry.data;
+const orderLabel = String(p.order).padStart(2, "0");
+const { Content } = await render(entry);
+---
+
+<BaseLayout
+	title={`${p.title} | Willy Fajar Ramadhan`}
+	description={p.summary}
+	image={p.cover.src}
+	type="article"
+>
+	<SiteHeader />
+
+	<main id="isi" class="mx-auto max-w-6xl px-5 pt-28 pb-20 md:pt-32 md:pb-28">
+		<nav aria-label="Jelajah" class="reveal" data-reveal>
+			<a
+				href="/#proyek"
+				class="font-mono2 text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase transition-colors hover:text-[#ff4d00]"
+			>
+				← Semua karya
+			</a>
+		</nav>
+
+		<article class="mt-8">
+			<p class="reveal font-mono2 tnum text-[11px] tracking-[0.18em] uppercase" data-reveal>
+				<span class="text-[#ff4d00]">No. {orderLabel}</span>
+				<span class="text-[#cfc4ae]"> · Proyek</span>
+			</p>
+			<h1
+				class="reveal font-display headline-balance mt-4 leading-[0.95] text-[#f2ead9] uppercase"
+				style="font-size: clamp(2.25rem, 5.5vw, 4.5rem);"
+				data-reveal
+			>
+				{p.title}
+			</h1>
+			<p class="reveal mt-5 max-w-[70ch] text-lg leading-relaxed text-[#cfc4ae]" data-reveal>
+				{p.summary}
+			</p>
+			<p class="reveal mt-4 font-mono2 tnum text-xs tracking-wide text-[#cfc4ae]" data-reveal>
+				{p.role} &nbsp;·&nbsp; {p.year}
+			</p>
+			{
+				p.topics && p.topics.length > 0 && (
+					<ul class="reveal mt-4 flex flex-wrap gap-2" data-reveal>
+						{p.topics.map((topic: string) => (
+							<li class="border border-dashed border-[#ff4d00]/70 px-2 py-0.5 font-mono2 text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">
+								{topic}
+							</li>
+						))}
+					</ul>
+				)
+			}
+			{
+				(p.demoUrl || p.repoUrl) && (
+					<div class="reveal mt-6 flex flex-wrap gap-3" data-reveal>
+						{p.demoUrl && (
+							<a
+								href={p.demoUrl}
+								aria-label={`${p.title}, demo langsung`}
+								class="bg-[#f2ead9] px-5 py-2.5 font-mono2 text-xs tracking-[0.18em] text-[#0c0b09] uppercase transition-transform hover:-translate-y-0.5"
+							>
+								Demo
+							</a>
+						)}
+						{p.repoUrl && (
+							<a
+								href={p.repoUrl}
+								aria-label={`${p.title}, repositori kode`}
+								class="border rule px-5 py-2.5 font-mono2 text-xs tracking-[0.18em] text-[#f2ead9] uppercase transition-colors hover:border-[#ff4d00] hover:text-[#ff4d00]"
+							>
+								Repo
+							</a>
+						)}
+					</div>
+				)
+			}
+
+			<figure class="reveal mt-10 overflow-hidden border rule bg-[#14120f]" data-reveal>
+				<Image src={p.cover} alt={p.coverAlt} class="w-full object-cover" />
+			</figure>
+
+			<div class="naskah reveal mt-10 max-w-[72ch]" data-reveal>
+				<Content />
+			</div>
+		</article>
+
+		<nav
+			aria-label="Proyek sebelum dan berikutnya"
+			class="mt-16 grid gap-px border rule bg-[#f2ead9]/10 sm:grid-cols-2"
+		>
+			{
+				prev ? (
+					<a
+						href={`/proyek/${proyekSlug(prev)}`}
+						rel="prev"
+						class="group bg-[#0c0b09] p-6 transition-colors hover:bg-[#14120f]"
+					>
+						<p class="font-mono2 text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">
+							← Sebelumnya
+						</p>
+						<p class="font-display mt-2 text-xl leading-tight text-[#f2ead9] uppercase group-hover:text-[#ff4d00]">
+							{prev.data.title}
+						</p>
+					</a>
+				) : (
+					<span class="bg-[#0c0b09] p-6" aria-hidden="true" />
+				)
+			}
+			{
+				next ? (
+					<a
+						href={`/proyek/${proyekSlug(next)}`}
+						rel="next"
+						class="group bg-[#0c0b09] p-6 text-right transition-colors hover:bg-[#14120f]"
+					>
+						<p class="font-mono2 text-[11px] tracking-[0.18em] text-[#cfc4ae] uppercase">
+							Berikutnya →
+						</p>
+						<p class="font-display mt-2 text-xl leading-tight text-[#f2ead9] uppercase group-hover:text-[#ff4d00]">
+							{next.data.title}
+						</p>
+					</a>
+				) : (
+					<span class="bg-[#0c0b09] p-6" aria-hidden="true" />
+				)
+			}
+		</nav>
+	</main>
+
+	<SiteFooter />
+</BaseLayout>
+
+<style>
+	.naskah {
+		color: var(--bone-dim);
+		line-height: 1.75;
+	}
+	.naskah :global(p + p) {
+		margin-top: 1.25em;
+	}
+	.naskah :global(h2),
+	.naskah :global(h3) {
+		color: var(--bone);
+		font-family: var(--display);
+		text-transform: uppercase;
+		line-height: 1.05;
+		margin-top: 2em;
+		margin-bottom: 0.6em;
+	}
+	.naskah :global(h2) {
+		font-size: clamp(1.5rem, 3vw, 2.25rem);
+	}
+	.naskah :global(h3) {
+		font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+	}
+	.naskah :global(a) {
+		color: var(--press);
+		text-decoration: underline;
+		text-underline-offset: 3px;
+	}
+	.naskah :global(strong) {
+		color: var(--bone);
+	}
+	.naskah :global(ul),
+	.naskah :global(ol) {
+		margin-top: 1.25em;
+		padding-left: 1.5em;
+	}
+	.naskah :global(ul) {
+		list-style: disc;
+	}
+	.naskah :global(ol) {
+		list-style: decimal;
+	}
+	.naskah :global(li + li) {
+		margin-top: 0.5em;
+	}
+	.naskah :global(blockquote) {
+		border-left: 2px solid var(--press);
+		padding-left: 1em;
+		margin-top: 1.5em;
+		color: var(--bone);
+	}
+</style>
